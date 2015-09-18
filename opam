@@ -1,6 +1,7 @@
 opam-version: "1"
 maintainer: "john.else@citrix.com"
 build: [
+  ["ocaml" "setup.ml" "-configure" "--%{mirage-xen:enable}%-xen"]
   [make]
 ]
 build-test: [
@@ -14,4 +15,7 @@ remove: [
   [make "PREFIX=%{prefix}%" "uninstall"]
 ]
 depends: ["cstruct" {>= "1.0.1"} "ounit"]
+depopts: [
+  "mirage-xen"
+]
 ocaml-version: [>= "4.00.1"]
